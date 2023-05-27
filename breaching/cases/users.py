@@ -25,7 +25,7 @@ def construct_user(model, loss_fn, cfg_case, setup):
             dataloaders += [construct_dataloader(cfg_case.data, cfg_case.impl, user_idx=idx)]
             indices += [idx]
         user = MultiUserAggregate(model, loss_fn, dataloaders, setup, cfg_case.user, user_indices=indices)
-    return user
+    return user, dataloader
 
 
 class UserSingleStep(torch.nn.Module):
