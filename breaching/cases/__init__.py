@@ -18,5 +18,5 @@ def construct_case(cfg_case, setup=dict(dtype=torch.float, device=torch.device("
     server = construct_server(model, loss_fn, cfg_case, setup, external_dataloader=external_dataloader)
     model = server.vet_model(model)
     # User:
-    user = construct_user(model, loss_fn, cfg_case, setup)
-    return user, server, model, loss_fn
+    user, dataloader = construct_user(model, loss_fn, cfg_case, setup)
+    return user, server, model, loss_fn, dataloader
